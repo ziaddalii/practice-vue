@@ -1,4 +1,5 @@
-<script>
+<!-- old way // vue 2 -->
+<!-- <script>
 export default {
   data() {
     return {
@@ -19,6 +20,24 @@ export default {
       }
     },
   },
+}
+</script> -->
+
+<script setup>
+import { ref } from 'vue'
+
+const name = ref('Ziad Ali')
+const status = ref('active')
+const tasks = ref(['task one', 'task two', 'task three'])
+const link = ref('https://google.com')
+const toggleStatus = () => {
+  if (status.value === 'active') {
+    status.value = 'pending'
+  } else if (status.value === 'pending') {
+    status.value = 'inactive'
+  } else {
+    status.value = 'active'
+  }
 }
 </script>
 
