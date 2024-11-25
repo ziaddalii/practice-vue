@@ -24,6 +24,7 @@ export default {
 </script> -->
 
 <script setup>
+import { onMounted } from 'vue'
 import { ref } from 'vue'
 
 const name = ref('Ziad Ali')
@@ -49,6 +50,16 @@ const addTask = () => {
 const deleteTask = (index) => {
   tasks.value.splice(index, 1)
 }
+
+onMounted(async () => {
+  try {
+    const response = await fetch('https://jsonplaceholder.typicode.com/todos')
+    const data = await response.json()
+    tasks.value = data.map((task) => task.title)
+  } catch (error) {
+    console.log(error)
+  }
+})
 </script>
 
 <template>
